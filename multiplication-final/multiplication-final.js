@@ -7,6 +7,7 @@ var solution;
 var userInput;
 //var stop = false;
 var wrong = 0;
+var incorrect = false;
 var num = prompt("How many questions do you want?"); //ask for hoy many questions you want
 var i;
 for (i=1;i<=num;i++){ //for loop, starts at 1 and ends when the number is above what num was set to
@@ -29,7 +30,20 @@ function multiPractice(){
   } else if (userInput == solution) {
     alert("You got it correct! "+x+" * "+y+" = "+solution+".");
   } else {
-    alert("That's incorrect. Going to next question.");
+    alert("That's incorrect.");
+    incorrect = true;
+    while (incorrect == true){
+      userInput = prompt("Question "+i+": What is "+x+" * "+y+"?");
+      if (userInput == "Stop" || userInput == "stop"){ //if the user inputted "stop" or "Stop"...
+        alert("Question "+i+" has been stopped.");
+        incorrect = false;
+      } else if (userInput == solution) {
+        alert("You got it correct! "+x+" * "+y+" = "+solution+".");
+        incorrect = false;
+  } else {
+    alert("That's incorrect.");
+  }
+    }
     wrong++; //increments wrong by 2.
   }
   //alert("wrongAnswers is "+wrong);
